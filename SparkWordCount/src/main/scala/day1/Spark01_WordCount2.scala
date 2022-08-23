@@ -1,12 +1,16 @@
+package day1
+
 import org.apache.spark.rdd.RDD
 import org.apache.spark.{SparkConf, SparkContext}
-
+/**
+ * 基础使用求和
+ */
 object Spark01_WordCount2 {
 
   def main(args: Array[String]): Unit = {
 
     //创建scala和Spark框架的链接
-    val sparkConf = new SparkConf().setMaster("local").setAppName("WordCount")
+    val sparkConf = new SparkConf().setMaster("local[*]").setAppName("WordCount")
     val sc = new SparkContext(sparkConf)
     //执行业务逻辑
 
@@ -29,7 +33,7 @@ object Spark01_WordCount2 {
     val wordToCount = wordGroup.map {
       case (word, list) => {
         list.reduce((t1, t2) => {
-          (t1._1, t1._2+ t2._2)
+          (t1._1, t1._2 + t2._2)
         })
       }
     }

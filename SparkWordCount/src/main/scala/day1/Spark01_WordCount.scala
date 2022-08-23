@@ -1,12 +1,17 @@
+package day1
+
 import org.apache.spark.rdd.RDD
 import org.apache.spark.{SparkConf, SparkContext}
 
+/**
+ * 基础使用求和
+ */
 object Spark01_WordCount {
 
   def main(args: Array[String]): Unit = {
 
     //创建scala和Spark框架的链接
-    val sparkConf = new SparkConf().setMaster("local").setAppName("WordCount")
+    val sparkConf = new SparkConf().setMaster("local[*]").setAppName("WordCount")
     val sc = new SparkContext(sparkConf)
     //执行业务逻辑
 
