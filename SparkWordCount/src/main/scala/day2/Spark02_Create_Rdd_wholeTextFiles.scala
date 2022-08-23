@@ -15,7 +15,7 @@ object Spark02_Create_Rdd_wholeTextFiles {
     val sparkContext = new SparkContext(sparkConf)
     //读取文件并获取文件路径
     //读取的结果为元组,第一个元素表示文件的路径,第二个元素表示文件内容
-    val rdd: RDD[(String, String)] = sparkContext.wholeTextFiles("SparkWordCount\\src\\data\\1.txt",2)
+    val rdd: RDD[(String, String)] = sparkContext.wholeTextFiles("SparkWordCount\\src\\data\\1.txt")
     rdd.collect().foreach(println)
     sparkContext.stop()
   }
