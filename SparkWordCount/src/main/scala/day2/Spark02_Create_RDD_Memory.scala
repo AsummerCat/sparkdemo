@@ -11,6 +11,8 @@ object Spark02_Create_RDD_Memory {
     //执行业务逻辑
     //1.创建RDD 并行RDD(业务列表,调用CPU核数分片处理)
     val rdd1 = sc.parallelize(List(1,2,3,4,5), 2)
+//    等价上面那个 makeRDD方法底层就是调用了parallelize方法
+//    val rdd1 = sc.makeRDD(List(1,2,3,4,5), 2)
 
     //计算逻辑
     rdd1.collect().foreach(println)
