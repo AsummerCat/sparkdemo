@@ -14,7 +14,7 @@ object Spark02_Create_Rdd_saveAsTextFile {
       new SparkConf().setMaster("local[*]").setAppName("spark")
     val sparkContext = new SparkContext(sparkConf)
     //读取文件 并设置2个分区
-    val rdd: RDD[(String, String)] = sparkContext.wholeTextFiles("SparkWordCount\\src\\data\\1.txt",2)
+    val rdd: RDD[(String, String)] = sparkContext.wholeTextFiles("SparkWordCount\\src\\data\\1.txt")
 //    rdd.collect().foreach(println)
     rdd.saveAsTextFile("SparkWordCount\\src\\data\\output")
     sparkContext.stop()
