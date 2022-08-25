@@ -3,7 +3,7 @@ package day3
 import org.apache.spark.{Partitioner, SparkConf, SparkContext}
 
 /**
- * RDD 设置检查点
+ * 自定义分区规则
  */
 object Spark03_RDD_My_Partitioner {
   def main(args: Array[String]): Unit = {
