@@ -28,7 +28,7 @@ object Spark03_RDD_checkPoint {
     //3.设置检查点
     //需要落盘,需要指定检查点保存路径
     //cache()在job执行完毕后会自动删除,而 检查点在job执行完毕后还存在
-//    rdd1.cache();
+    rdd1.cache();
     rdd2.checkpoint();
 
     //计算逻辑1
