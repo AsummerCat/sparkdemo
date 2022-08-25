@@ -13,22 +13,26 @@ object Spark03_RDD_checkPoint {
     val sc = new SparkContext(sparkConf)
 
     //1.设置检查点保存路径
-    sc.setCheckpointDir("cp")
+    sc.setCheckpointDir("SparkWordCount\\src\\cache")
 
     //执行业务逻辑
     //2.创建RDD 并行RDD(业务列表,调用CPU核数分片处理)
     val rdd1 = sc.parallelize(List(1, 2, 3, 4, 5), 2)
 
+    //默认执行逻辑计算逻辑
+    val rdd2 = rdd1.map(num=>{
+      println("xxxxxxxxx")
+      num*1
+    })
+
     //3.设置检查点
     //需要落盘,需要指定检查点保存路径
     //cache()在job执行完毕后会自动删除,而 检查点在job执行完毕后还存在
-    rdd1.cache();
-    rdd1.checkpoint();
-
+//    rdd1.cache();
+    rdd2.checkpoint();
 
     //计算逻辑1
-    val value = rdd1.map(num=>{
-      println("xxxxxxxxx")
+    val value = rdd2.map(num=>{
       num*2
     })
     value.collect().foreach(print)
@@ -36,7 +40,7 @@ object Spark03_RDD_checkPoint {
     println("****************************")
 
     //计算逻辑2
-    val value1 = rdd1.map(num=>{
+    val value1 = rdd2.map(num=>{
       println("xxxxxxxxx")
       num*3
     })
