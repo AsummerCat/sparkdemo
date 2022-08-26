@@ -61,7 +61,8 @@ object Spark_Acc_custom {
       // 查询 map 中是否存在相同的单词
       // 如果有相同的单词，那么单词的数量加 1
       // 如果没有相同的单词，那么在 map 中增加这个单词
-      map(word) = map.getOrElse(word, 0L) + 1L
+      var wordCount = map.getOrElse(word, 0L) + 1L
+      map.update(word, wordCount)
     }
 
     // 合并累加器

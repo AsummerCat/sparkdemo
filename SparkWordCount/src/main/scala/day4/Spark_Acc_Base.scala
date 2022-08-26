@@ -3,7 +3,7 @@ package day4
 import org.apache.spark.{SparkConf, SparkContext}
 
 /**
- * 累加器的使用 基础  var sum = sc.longAccumulator("sum")
+ * 累加器的使用(可变变量) 基础  var sum = sc.longAccumulator("sum")
  */
 object Spark_Acc_Base {
   def main(args: Array[String]): Unit = {
