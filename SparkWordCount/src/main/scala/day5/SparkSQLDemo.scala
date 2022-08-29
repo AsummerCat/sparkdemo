@@ -14,12 +14,12 @@ import scala.collection.immutable
  */
 object SparkSQLDemo {
   def main(args: Array[String]): Unit = {
-    val sparkConf = new SparkConf().setMaster("local[*]").setAppName("WordCount")
+    val sparkConf = new SparkConf().setMaster("local[*]").setAppName("SparkSql")
     //1.读取资源
-    val sc = new SparkContext(sparkConf)
 
     //2.创建SQLcontext对象
-    val sqlc = new SparkSession(sc)
+    val sqlc = SparkSession.builder().config(sparkConf).getOrCreate()
+
     //3.创建sql查询操作
     val df = sqlc.read.json("SparkWordCount\\src\\data\\user.json")
     //或者
