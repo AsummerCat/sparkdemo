@@ -13,7 +13,7 @@ object Spark_Acc_Base {
     //执行业务逻辑
     //1.创建RDD
 
-    val rdd = sc.makeRDD(List(1, 2, 3, 4, 5))
+    var rdd=sc.makeRDD(List(1, 2, 3, 4, 5))
     // 声明累加器 系统内置三中累加器 1.longAccumulator 2.doubleAccumulator   3.collectionAccumulator
     var sum = sc.longAccumulator("sum")
     //    var sum = sc.doubleAccumulator("sum")
