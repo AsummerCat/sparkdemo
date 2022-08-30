@@ -19,19 +19,19 @@ object serializable_Kryo {
     val result: RDD[String] = searcher.getMatchedRDD1(rdd)
     result.collect.foreach(println)
   }
+  case class Searcher(val query: String) {
+    def isMatch(s: String) = {
+      s.contains(query)
+    }
+
+    def getMatchedRDD1(rdd: RDD[String]) = {
+      rdd.filter(isMatch)
+    }
+
+    def getMatchedRDD2(rdd: RDD[String]) = {
+      val q = query
+      rdd.filter(_.contains(q))
+    }
+  }
 }
 
-case class Searcher(val query: String) {
-  def isMatch(s: String) = {
-    s.contains(query)
-  }
-
-  def getMatchedRDD1(rdd: RDD[String]) = {
-    rdd.filter(isMatch)
-  }
-
-  def getMatchedRDD2(rdd: RDD[String]) = {
-    val q = query
-    rdd.filter(_.contains(q))
-  }
-}

@@ -25,25 +25,25 @@ object Spark03_RDD_My_Partitioner {
     //关闭链接
     sc.stop()
   }
-}
+  /**
+   * 自定义分区器
+   * 1.继承Partitioner
+   * 2.重写方法
+   */
+  class My_Partitioner extends Partitioner {
+    //分区数量
+    override def numPartitions: Int = 3
 
-/**
- * 自定义分区器
- * 1.继承Partitioner
- * 2.重写方法
- */
-class My_Partitioner extends Partitioner {
-  //分区数量
-  override def numPartitions: Int = 3
-
-  //返回数据的分区索引,从0开始 ,根据数据的key来判断分区
-  override def getPartition(key: Any): Int = {
-    if (key == "nba") {
-      0
-    } else if (key == "nba") {
-      1
-    } else {
-      2
+    //返回数据的分区索引,从0开始 ,根据数据的key来判断分区
+    override def getPartition(key: Any): Int = {
+      if (key == "nba") {
+        0
+      } else if (key == "nba") {
+        1
+      } else {
+        2
+      }
     }
   }
 }
+
