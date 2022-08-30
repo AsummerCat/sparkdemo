@@ -6,7 +6,7 @@ import org.apache.spark.sql.types._
 import org.apache.spark.sql.{Row, SparkSession}
 
 /**
- * sprakSql自定义函数扩展  UDAF弱类型
+ * sprakSql自定义函数扩展  UDAF弱类型 按照顺序位来操作
  */
 object SparkSqlCustomFunUDAF {
   def main(args: Array[String]): Unit = {
@@ -23,8 +23,8 @@ object SparkSqlCustomFunUDAF {
     df.createOrReplaceTempView("user")
 
     //6.创建udf自定义函数 并注册
-    //创建聚合函数
-    var myAverage = new MyAveragUDAF
+    //创建聚合函数 求平均
+    val myAverage = new MyAveragUDAF
     //在 spark 中注册聚合函数
     sqlc.udf.register("avgAge", myAverage)
 
