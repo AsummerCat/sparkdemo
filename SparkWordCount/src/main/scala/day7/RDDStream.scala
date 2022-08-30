@@ -29,7 +29,7 @@ object RDDStream {
     //6.打印结果
     reducedStream.print()
 
-    //7.启动任务
+    //7.启动采集器
     ssc.start()
 
     //8.循环创建并向 RDD 队列中放入 RDD
@@ -38,6 +38,7 @@ object RDDStream {
       Thread.sleep(2000)
     }
 
+    //9.等待采集器的关闭
     ssc.awaitTermination()
   }
 }

@@ -28,9 +28,10 @@ object StreamWordCount {
     //打印
     wordAndCountStreams.print()
 
-    //启动 SparkStreamingContext
+    //启动采集器
     ssc.start()
 
+    //等待采集器的关闭
     ssc.awaitTermination()
   }
 }
