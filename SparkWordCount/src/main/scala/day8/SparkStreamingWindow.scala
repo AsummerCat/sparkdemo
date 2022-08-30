@@ -20,6 +20,9 @@ object SparkStreamingWindow {
 
     val data = lineStreams.map((_, 1))
 
+    //语法:采集周期证书倍
+    //data.window(Seconds(12), Seconds(6))
+
     //设置时间滑动窗口 3 秒一个批次，窗口 12 秒，滑步 6 秒。
     val wordCounts = data.reduceByKeyAndWindow((a: Int, b: Int) => (a + b), Seconds(12), Seconds(6))
 
