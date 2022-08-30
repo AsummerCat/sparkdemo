@@ -15,7 +15,7 @@ object SparkSqlCustomFunUDAF {
     //2.创建SQLcontext对象
     val sqlc = SparkSession.builder().config(sparkConf).getOrCreate()
     //3.导入隐式转换包 后面很多操作都需要它
-
+    import sqlc.implicits._
     //4.获取数据源
     val df = sqlc.read.json("SparkWordCount\\src\\data\\user.json")
 
