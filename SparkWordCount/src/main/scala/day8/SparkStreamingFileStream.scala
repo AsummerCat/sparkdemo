@@ -7,7 +7,6 @@ import org.apache.spark.streaming.{Seconds, StreamingContext}
 
 import java.io.{BufferedReader, InputStreamReader}
 import java.net.Socket
-import java.nio.ByteBuffer
 import java.nio.charset.StandardCharsets
 
 /**
@@ -53,11 +52,9 @@ object SparkStreamingFileStream {
     }
 
     override def onStop(): Unit = {
+      //自定义clone逻辑 比如mysql
       flag = false
     }
-
-
-    override def store(bytes: ByteBuffer): Unit = super.store(bytes)
 
     //读数据并将数据发送给 Spark
     def receive(): Unit = {
