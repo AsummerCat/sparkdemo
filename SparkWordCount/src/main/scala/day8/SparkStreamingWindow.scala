@@ -12,7 +12,8 @@ object SparkStreamingWindow {
     val sparkConf = new SparkConf().setMaster("local[*]").setAppName("StreamWordCount")
     //2.初始化 SparkStreamingContext
     val ssc = new StreamingContext(sparkConf, Seconds(3))
-
+    //3.设置检查点
+    ssc.checkpoint("/historyCache")
 
     //3.获取采集周期数据
     //某些场合下,需要历史采集周期数据,进行数据汇总 需要设置检查点来保留历史数据
