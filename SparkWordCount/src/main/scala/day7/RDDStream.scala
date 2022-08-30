@@ -6,6 +6,9 @@ import org.apache.spark.streaming.{Seconds, StreamingContext}
 
 import scala.collection.mutable
 
+/**
+ * SparkStreaming 本地模拟数据
+ */
 object RDDStream {
   def main(args: Array[String]) {
     //1.初始化 Spark 配置信息

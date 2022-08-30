@@ -3,6 +3,9 @@ package day7
 import org.apache.spark.SparkConf
 import org.apache.spark.streaming.{Seconds, StreamingContext}
 
+/**
+ * SparkStreaming 监控指定端口 9999
+ */
 object StreamWordCount {
   def main(args: Array[String]): Unit = {
     //1.初始化 Spark 配置信息
