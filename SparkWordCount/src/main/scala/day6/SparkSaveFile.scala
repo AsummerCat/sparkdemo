@@ -21,6 +21,10 @@ object SparkSaveFile {
     val rdd: RDD[User] = sqlc.sparkContext.makeRDD(List(User("lisi", 20), User("zs", 30)))
     val ds: Dataset[User] = rdd.toDS
 
+    //保存为其他格式 format指定为json
+    val frame = rdd.toDF()
+    frame.write.format("json").save("oupuut1")
+
     //方式 1：通用的方式 format 指定写出类型
     ds.write
       .format("jdbc")
